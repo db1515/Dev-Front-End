@@ -1,0 +1,23 @@
+<html>
+<table>
+ <tbody>
+  <tr>
+    <th>City</th>
+  </tr>
+   <?php
+    $url = 'https://api.fda.gov/food/enforcement.json?search=report_date[20040101+TO+20171221]&limit=100';
+    $url_json = file_get_contents($url);
+    $url_array = json_decode($url_json, true);
+    for ($x=0;$x<=100;$x++)
+    {
+       	foreach ($url_array as $food)
+    	{
+            echo '<tr>';   
+            echo '<td>' . $food[$x][city] . '<br>';
+            echo '<tr>';
+       	}
+    }
+   ?>
+ </tbody>
+</table>
+</html>
